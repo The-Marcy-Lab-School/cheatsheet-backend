@@ -8,7 +8,7 @@
   - [Handling POST requests with a JSON body](#handling-post-requests-with-a-json-body)
 - [SQL + Postgres](#sql--postgres)
   - [The Basics](#the-basics)
-  - [One-To-Many Table Example](#one-to-many-table-example)
+  - [One-To-Many Table](#one-to-many-table)
   - [Many To Many Table](#many-to-many-table)
 - [Knex](#knex)
   - [The Basics](#the-basics-1)
@@ -172,7 +172,7 @@ app.post('/api/fellows', createFellow)
 
 ![](./img/labeled-erd.png)
 
-### One-To-Many Table Example
+### One-To-Many Table
 
 * **Schema Design** - the process of planning the structure and relationships of the tables in a database.
 * **Primary Key** - a column in a table that uniquely identifies each row in the table.
