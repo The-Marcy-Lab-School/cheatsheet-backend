@@ -4,7 +4,7 @@
   - [Basics](#basics)
   - [Log Routes and Serve Static Middleware](#log-routes-and-serve-static-middleware)
   - [Express API as a Middleman](#express-api-as-a-middleman)
-  - [Sending same-origin requests from the frontend to the backend (Vite Config)](#sending-same-origin-requests-from-the-frontend-to-the-backend-vite-config)
+  - [Sending frontend to backend requests (Vite Config)](#sending-frontend-to-backend-requests-vite-config)
   - [Handling POST requests with a JSON body](#handling-post-requests-with-a-json-body)
 - [SQL + Postgres](#sql--postgres)
   - [The Basics](#the-basics)
@@ -106,7 +106,7 @@ If we want to avoid making our API keys public, we need to be careful with how w
 
 ![](./img/express-api-middleman.svg)
 
-### Sending same-origin requests from the frontend to the backend (Vite Config)
+### Sending frontend to backend requests (Vite Config)
 
 * **Cross-origin requests** - HTTP requests made from one server to another.
 * **Same-origin requests** - HTTP requests made from a server to itself.
