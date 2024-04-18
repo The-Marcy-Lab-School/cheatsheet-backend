@@ -182,11 +182,11 @@ app.post('/api/fellows', createFellow)
 
 ```sql
 CREATE TABLE people (
-	id SERIAL PRIMARY KEY,
+	id SERIAL PRIMARY KEY, -- primary key
 	name TEXT NOT NULL
 );
 CREATE TABLE pets (
-	id SERIAL PRIMARY KEY,
+	id SERIAL PRIMARY KEY, -- primary key
 	name TEXT NOT NULL, 
 	type TEXT NOT NULL, 
 	owner_id INTEGER REFERENCES people --foreign key
@@ -282,7 +282,7 @@ WHERE products.id = 2;
 
     ```js
     const makeKnex = require('knex');
-    const knexConfigs = require('./knexfile.js')
+    const knexConfigs = require('./knexfile.js'); // or wherever knexfile is
     const env = process.env.NODE_ENV || 'development';
     const knex = makeKnex(knexConfigs[env]);
 
@@ -292,6 +292,8 @@ WHERE products.id = 2;
 ### Using `Knex.raw` to execute SQL
 
 ```js
+const knex = require('./knex'); // or wherever knex.js is
+
 const getPetsByOwnerNameAndType = async (ownerName, type) => {
   const query = `
     SELECT pets.name, pets.id
