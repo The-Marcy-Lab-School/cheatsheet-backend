@@ -442,9 +442,10 @@ module.exports = Fellow;
 
 ### Migrations
 
-`npx knex migrate:make migration_name`
-`npx knex migrate:rollback`
-`npx knex migrate:latest`
+**Commands**:
+* `npx knex migrate:make migration_name` - whenever you want to update your schema
+* `npx knex migrate:rollback` - only when you want to undo a change
+* `npx knex migrate:latest` - when you want to run your migrations
 
 ```js
 // return a `knex.schema` call that creates tables
@@ -470,8 +471,9 @@ exports.down = function (knex) {
 
 ### Seeds
 
-`npx knex seed:make seed_name`
-`npx knex seed:run`
+**Commands**:
+- `npx knex seed:make seed_name` - whenever you want to create a new seed file
+- `npx knex seed:run` - when you want to run your seeds
 
 This seed file will reset each of the posts and fellows tables before inserting data into both
 
