@@ -168,11 +168,9 @@ app.post('/api/fellows', createFellow)
 * **Database** - a structured collection of data that is organized in a manner for easy retrieval.
 * **Database Management System (DBMS)** - a piece of software used to create and maintain a database.
 * **Postgres** - a popular "relational" database management system that stores data in a table-like manner
-* **Table** - a collection of related data organized in rows and columns.
-  * A **row** represents a single object/instance/record in the table 
-  * A **column** represents a property/attribute/field of that object. Columns have data types such as integer, string, date, boolean, etc...
-  * A **primary key** serves as the unique identifier for a row in a table
 * **SQL (Structured Query Language)** - a language used by relational database management systems to create, read, update, or delete data from a database.
+
+![](./img/labeled-erd.png)
 
 ### One-To-Many Table Example
 
@@ -214,12 +212,12 @@ CREATE TABLE pets (
 | 6   | Pon Juablo | cat  | 2        |
 | 7   | Kora       | dog  | 1        |
 
-What are the names of all the pets owned by Ann?
+What are the names and ids of all the pets owned by Ann?
 
 ```sql
-SELECT pets.name 
-FROM people 
-	JOIN pets ON people.id = pets.owner_id
+SELECT pets.id, pets.name
+FROM pets 
+	JOIN people ON people.id = pets.owner_id
 WHERE people.name = 'Ann Duong';
 ```
 
