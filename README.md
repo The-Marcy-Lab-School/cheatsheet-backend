@@ -14,9 +14,9 @@
   - [The Basics](#the-basics-1)
   - [Configuring Knex](#configuring-knex)
   - [Using `Knex.raw` to execute SQL](#using-knexraw-to-execute-sql)
-  - [Creating Example](#creating-example)
-  - [Updating Example](#updating-example)
-  - [Deleting Example](#deleting-example)
+  - [SQL INSERT](#sql-insert)
+  - [SQL UPDATE](#sql-update)
+  - [SQL DELETE](#sql-delete)
   - [A Model Example Using Knex](#a-model-example-using-knex)
   - [Migrations](#migrations)
   - [Seeds](#seeds)
@@ -313,7 +313,7 @@ const getPetsByOwnerNameAndType = async (ownerName, type) => {
 * Invoke `knex.raw` with a `query` and an array of values to replace the `?` in order
 * `knex.raw` returns an object with a `rows` array. 9 times out of 10, we are only interested in that `rows` array.
 
-### Creating Example
+### SQL INSERT
 
 ```js
 const createPet = async(name, type, ownerId) => {
@@ -331,7 +331,7 @@ const createPet = async(name, type, ownerId) => {
 * `RETURNING *` returns the created record. Without this, `result.rows` will be an empty array.
 * `result.rows[0]` will be the one created value.
 
-### Updating Example
+### SQL UPDATE
 
 ```js
 const updatePetNameByName = async(oldName, newName) => {
@@ -347,7 +347,7 @@ const updatePetNameByName = async(oldName, newName) => {
 }
 ```
 
-### Deleting Example
+### SQL DELETE
 
 ```js
 const deletePetByName = async(name) => {
@@ -363,6 +363,8 @@ const deletePetByName = async(name) => {
 ```
 
 ### A Model Example Using Knex
+
+This model has methods for CRUD operations for a `fellows` table. 
 
 ```js
 const knex = require('./knex');
@@ -422,6 +424,7 @@ class Fellow {
 
   static async delete(id) { // Delete
     // First delete all associated posts from that fellow
+    // using the Post model
     await Post.deleteAllPostsForFellow(id);
 
     const query = `
