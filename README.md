@@ -217,9 +217,14 @@ What are the names and ids of all the pets owned by Ann?
 ```sql
 SELECT pets.id, pets.name
 FROM pets 
-	JOIN people ON people.id = pets.owner_id
+JOIN people ON pets.owner_id = people.id
 WHERE people.name = 'Ann Duong';
 ```
+
+* The order that you select `FROM` and `JOIN` does not matter
+* The `ON` clause indicates the relationship between the two tables (the `pets.owner_id` column references the `people.id` column)
+* The `WHERE` clause filters down the result.
+* When dealing with mutliple tables, *always* specify the table that a value comes from.
 
 ### Many To Many Table
 
@@ -299,6 +304,8 @@ const getPetsByOwnerNameAndType = async (ownerName, type) => {
   return rows;
 }
 ```
+
+* `knex.raw` returns a promise so we use `async/await`
 * We use string templates to write multi-line SQL statements. NEVER interpolate values into your query string using `${}` as the query can become vulnerable to SQL Injection attacks.
 * Use `?` to indicate placeholders for dynamic values
 * Invoke `knex.raw` with a `query` and an array of values to replace the `?` in order
