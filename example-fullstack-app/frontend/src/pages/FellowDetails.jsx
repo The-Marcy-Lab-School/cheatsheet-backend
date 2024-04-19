@@ -18,12 +18,23 @@ const FellowDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
+  // fetch the current fellow based on the current URL path
   useEffect(() => {
     const doFetch = async () => {
       try {
         const [data, error] = await fetchData(`/api/fellows/${id}`)
         if (data) setFellow(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    doFetch();
+  }, [])
 
+  // fetch the posts for this fellow, refetch if a new post is added or a post is deleted
+  useEffect(() => {
+    const doFetch = async () => {
+      try {
         const [posts, _] = await fetchData(`/api/fellows/${id}/posts`)
         if (posts) setPostsByFellow(posts);
       } catch (error) {
@@ -57,9 +68,9 @@ const FellowDetails = () => {
       const options = {
         method: "POST",
         headers: { "Content-type": "application/json" },
-        body: JSON.stringify({ postContent, fellowId: id })
+        body: JSON.stringify({ postContent })
       }
-      const [newPostResponse, _] = await fetchData(`/api/posts`, options)
+      const [newPostResponse, _] = await fetchData(`/api/fellows/${id}/posts`, options)
       if (newPostResponse) setNewPost(newPostResponse);
     } catch (error) {
       console.log(error);

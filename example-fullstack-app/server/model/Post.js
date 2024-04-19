@@ -12,6 +12,7 @@ class Post {
     return rows[0];
   }
 
+  // not used really but easy to make available
   static async list() { // Get all
     const query = `
       SELECT * 
@@ -21,6 +22,7 @@ class Post {
     return rows;
   }
 
+  // not used really but easy to make available
   static async findById(id) { // Get one
     const query = `
       SELECT * 
@@ -31,6 +33,7 @@ class Post {
     return rows[0];
   }
 
+  // used by the fellow details page
   static async findPostsByFellowId(fellow_id) { // Get one
     const query = `
       SELECT posts.id, posts.post_content 
@@ -43,6 +46,7 @@ class Post {
     return rows;
   }
 
+  // used by the fellow details page
   static async delete(id) { // Delete
     const query = `
       DELETE FROM posts
@@ -53,6 +57,7 @@ class Post {
     return rows;
   }
 
+  // used when a fellow is deleted
   static async deleteAllPostsForFellow(fellow_id) {
     const query = `
       DELETE FROM posts

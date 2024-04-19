@@ -20,6 +20,7 @@
   - [A Model Example Using Knex](#a-model-example-using-knex)
   - [Migrations](#migrations)
   - [Seeds](#seeds)
+- [Authentication \& Authorization](#authentication--authorization)
 
 
 Welcome to the world of backend! In this unit, we'll learn about:
@@ -504,3 +505,6 @@ exports.seed = async function (knex) {
   ])
 };
 ```
+
+## Authentication & Authorization
+
